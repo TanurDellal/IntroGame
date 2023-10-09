@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         count = 0;
+        numPickups = GameObject.FindGameObjectsWithTag("PickUp").Length;
         winText.text = "";
         SetCountText();
 
@@ -45,11 +46,12 @@ public class PlayerController : MonoBehaviour
 
     private void SetCountText()
     {
-        scoreText.text = "Score: " + count.ToString();
+        scoreText.text = "Score: " + "<b>"+count.ToString()+"</b>";
 
         if (count >= numPickups)
         {
             winText.text = "You win!";
+            Time.timeScale = 0;
         }
     }
 }
